@@ -10,7 +10,8 @@
 
 
 
-export OMP_NUM_THREADS=1 
+export OMP_NUM_THREADS=1
+
 export CUDA_VISIBLE_DEVICES=7
 
 nohup python -u driver/TrainTest.py  --config_file config.ctb6.cfg > log 2>&1 &
