@@ -1,0 +1,51 @@
+[Data]
+pretrained_char_embeddings_file = experiment/ctb60.char.vec
+pretrained_bichar_embeddings_file = experiment/ctb60.bichar.vec.sample
+
+data_dir = experiment/ctb
+train_file = %(data_dir)s/sample.txt
+dev_file = %(data_dir)s/sample.txt
+test_file = %(data_dir)s/sample.txt
+min_occur_count = 0
+
+[Save]
+save_dir = experiment/ctb_model
+config_file = %(save_dir)s/config.cfg
+save_model_path = %(save_dir)s/model
+save_vocab_path = %(save_dir)s/vocab
+load_dir = experiment/ctb_model
+load_model_path = %(load_dir)s/model
+load_vocab_path = %(load_dir)s/vocab
+
+[Network]
+lstm_layers = 1
+char_dims = 200
+bichar_dims = 200
+dropout_emb = 0.33
+lstm_hiddens = 200
+dropout_lstm_input = 0.33
+dropout_lstm_hidden = 0.33
+dropout_mlp = 0
+hidden_size = 200
+
+[Optimizer]
+learning_rate = 2e-3
+decay = .75
+decay_steps = 5000
+beta_1 = .9
+beta_2 = .9
+epsilon = 1e-12
+clip = 5.0
+
+[Run]
+num_buckets_train = 40
+num_buckets_valid = 10
+num_buckets_test = 10
+train_iters = 50000
+train_batch_size = 8
+test_batch_size = 8
+validate_every = 100
+save_after = 10
+update_every = 1
+max_edu_len = 40
+
